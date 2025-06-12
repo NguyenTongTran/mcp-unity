@@ -14,7 +14,7 @@
     "build": "tsc",
     "start": "node build/index.js",
     "watch": "tsc --watch",
-    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+    "inspector": "npx @modelcontextprotocol/inspector node build/index.js"
   },
   "keywords": [
     "mcp",
