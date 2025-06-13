@@ -189,6 +189,10 @@ namespace McpUnity.Unity
             // Register PackageManagerTool
             AddPackageTool addPackageTool = new AddPackageTool();
             _tools.Add(addPackageTool.Name, addPackageTool);
+
+            // Register AddUnityPackageTool
+            AddUnityPackageTool addUnityPackageTool = new AddUnityPackageTool();
+            _tools.Add(addUnityPackageTool.Name, addUnityPackageTool);
             
             // Register RunTestsTool
             RunTestsTool runTestsTool = new RunTestsTool(_testRunnerService);
