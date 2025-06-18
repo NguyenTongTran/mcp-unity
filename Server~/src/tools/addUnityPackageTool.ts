@@ -72,20 +72,18 @@ async function toolHandler(mcpUnity: McpUnity, params: any): Promise<CallToolRes
     );
   }
   
+  const data = {
+    message: response.message,
+    assets: response.assets || []
+  }
+
   return {
     content: [
       {
         type: 'text',
-        text: response.message
+        mimeType: "application/json",
+        text: JSON.stringify(data, null, 2)
       },
-      {
-        type: 'resource',
-        resource: { 
-          uri: "unity://assets",
-          mimeType: "application/json",
-          text: JSON.stringify(response.assets || [], null, 2)
-        }
-      }
     ]
   };
 }
