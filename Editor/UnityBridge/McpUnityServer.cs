@@ -209,6 +209,14 @@ namespace McpUnity.Unity
             // Register AddAssetToSceneTool
             AddAssetToSceneTool addAssetToSceneTool = new AddAssetToSceneTool();
             _tools.Add(addAssetToSceneTool.Name, addAssetToSceneTool);
+
+            // Register DeleteAssetTool
+            DeleteAssetTool deleteAssetTool = new DeleteAssetTool();
+            _tools.Add(deleteAssetTool.Name, deleteAssetTool);
+
+            // Register MoveAssetTool
+            MoveAssetTool moveAssetTool = new MoveAssetTool();
+            _tools.Add(moveAssetTool.Name, moveAssetTool);
         }
         
         /// <summary>

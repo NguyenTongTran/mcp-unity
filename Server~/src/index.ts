@@ -21,6 +21,8 @@ import { registerGetTestsResource } from './resources/getTestsResource.js';
 import { registerGetGameObjectResource } from './resources/getGameObjectResource.js';
 import { registerGameObjectHandlingPrompt } from './prompts/gameobjectHandlingPrompt.js';
 import { registerAddUnityPackageTool } from './tools/addUnityPackageTool.js';
+import { registerDeleteAssetTool } from './tools/assetTools/deleteAssetTool.js';
+import { registerMoveAssetTool } from './tools/assetTools/moveAssetTool.js';
 
 // Initialize loggers
 const serverLogger = new Logger('Server', LogLevel.INFO);
@@ -57,6 +59,8 @@ registerUpdateComponentTool(server, mcpUnity, toolLogger);
 registerAddAssetToSceneTool(server, mcpUnity, toolLogger);
 registerUpdateGameObjectTool(server, mcpUnity, toolLogger);
 registerAddUnityPackageTool(server, mcpUnity, toolLogger);
+registerDeleteAssetTool(server, mcpUnity, toolLogger);
+registerMoveAssetTool(server, mcpUnity, toolLogger);
 
 // Register all resources into the MCP server
 registerGetTestsResource(server, mcpUnity, resourceLogger);
