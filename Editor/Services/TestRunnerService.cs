@@ -179,7 +179,7 @@ namespace McpUnity.Services
                 return;
             
             var summary = BuildResultJson(_results, result);
-            _tcs?.TrySetResult(summary);
+            _tcs.TrySetResult(summary);
             _tcs = null;
         }
 
@@ -224,7 +224,7 @@ namespace McpUnity.Services
                 ["message"]           = $"{result.Test.Name} test run completed: {result.PassCount}/{testCount} passed - {result.FailCount}/{testCount} failed - {result.SkipCount}/{testCount} skipped",
                 ["resultState"]       = result.ResultState,
                 ["durationSeconds"]   = result.Duration,
-                ["testCount"]         = testCount,
+                ["testCount"]         = results.Count,
                 ["passCount"]         = result.PassCount,
                 ["failCount"]         = result.FailCount,
                 ["skipCount"]         = result.SkipCount,
