@@ -5,14 +5,14 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { McpUnityError, ErrorType } from '../../utils/errors.js';
 import { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 
-const toolName = 'move_asset';
-const toolDescription = 'Moves assets (files or folders) from source locations to a destination in the project';
+const toolName = 'add_to_addressable';
+const toolDescription = 'Adds multiple assets to the Addressable system';
 const paramsSchema = z.object({
-  sourcePaths: z.array(z.string()).describe('The source path(s) of the asset(s) to move'),
-  destPath: z.string().describe('The destination path where the asset will be moved to')
+  assets: z.record(z.string()).describe('Key/value object where key is address and value is asset path'),
+  groupName: z.string().optional().describe('Optional name of the Addressable group to add the asset to. If not provided, will use the default group')
 });
 
-export function registerMoveAssetTool(server: McpServer, mcpUnity: McpUnity, logger: Logger) {
+export function registerAddToAddressableTool(server: McpServer, mcpUnity: McpUnity, logger: Logger) {
   logger.info(`Registering tool: ${toolName}`);
       
   server.tool(
@@ -34,35 +34,27 @@ export function registerMoveAssetTool(server: McpServer, mcpUnity: McpUnity, log
 }
 
 async function toolHandler(mcpUnity: McpUnity, params: any): Promise<CallToolResult> {
-  const { sourcePaths, destPath } = params;
+  const { assets, groupName } = params;
         
-  if (!sourcePaths || !destPath) {
+  if (!assets || Object.keys(assets).length === 0) {
     throw new McpUnityError(
       ErrorType.VALIDATION,
-      'Required parameters "sourcePaths" and "destPath" must be provided'
-    );
-  }
-
-  if (sourcePaths.length === 0) {
-    throw new McpUnityError(
-      ErrorType.VALIDATION,
-      'At least one source path must be provided'
+      'Required parameter "assets" must be provided as a non-empty object with address:path pairs'
     );
   }
 
   const response = await mcpUnity.sendRequest({
     method: toolName,
     params: {
-      sourcePaths,
-      destPath
+      assets,
+      groupName
     }
   });
   
   if (!response.success) {
     throw new McpUnityError(
       ErrorType.TOOL_EXECUTION,
-      response.message || `Failed to move assets to ${destPath}`,
-      response.errors
+      response.errors,
     );
   }
 
@@ -72,4 +64,4 @@ async function toolHandler(mcpUnity: McpUnity, params: any): Promise<CallToolRes
       text: response.message,
     }]
   };
-}
+} 

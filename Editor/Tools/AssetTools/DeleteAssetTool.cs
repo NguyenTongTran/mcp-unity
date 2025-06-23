@@ -46,6 +46,7 @@ namespace McpUnity.Tools
                 
                 if (success)
                 {
+                    AssetDatabase.Refresh();
                     return new JObject
                     {
                         ["success"] = true,

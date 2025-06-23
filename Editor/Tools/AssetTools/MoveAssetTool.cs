@@ -94,6 +94,8 @@ namespace McpUnity.Tools
                     {
                         errors.Add(normalizedSourcePath, error);
                     }
+
+                    AssetDatabase.Refresh();
                 }
                 catch (System.Exception ex)
                 {
@@ -103,6 +105,7 @@ namespace McpUnity.Tools
 
             return new JObject
             {
+                ["success"] = !errors.Any(),
                 ["type"] = "text",
                 ["message"] = $"Moved assets: {results} successfully, {errors.Count} failed",
                 ["errors"] = errors.Count > 0 ? JObject.FromObject(errors) : null

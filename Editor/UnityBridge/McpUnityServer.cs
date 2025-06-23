@@ -217,6 +217,10 @@ namespace McpUnity.Unity
             // Register MoveAssetTool
             MoveAssetTool moveAssetTool = new MoveAssetTool();
             _tools.Add(moveAssetTool.Name, moveAssetTool);
+
+            // Register AddToAddressableTool
+            AddToAddressableTool addToAddressableTool = new AddToAddressableTool();
+            _tools.Add(addToAddressableTool.Name, addToAddressableTool);
         }
         
         /// <summary>
