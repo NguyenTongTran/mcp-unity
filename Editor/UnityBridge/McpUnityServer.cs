@@ -264,9 +264,9 @@ namespace McpUnity.Unity
             AddToAddressableTool addToAddressableTool = new AddToAddressableTool();
             _tools.Add(addToAddressableTool.Name, addToAddressableTool);
 
-            // Register AddAssetTool
-            AddAssetTool addAssetTool = new AddAssetTool();
-            _tools.Add(addAssetTool.Name, addAssetTool);
+            // Register PackAtlasTool
+            PackAtlasTool packAtlasTool = new PackAtlasTool();
+            _tools.Add(packAtlasTool.Name, packAtlasTool);
         }
         
         /// <summary>

@@ -25,6 +25,7 @@ import { registerDeleteAssetTool } from './tools/assetTools/deleteAssetTool.js';
 import { registerMoveAssetTool } from './tools/assetTools/moveAssetTool.js';
 import { registerAddToAddressableTool } from './tools/addressableTools/addToAddressableTool.js';
 import { registerAddAssetTool } from './tools/assetTools/addAssetTool.js';
+import { registerPackAtlasTool } from './tools/spriteAtlasTools/packAtlasTool.js';
 
 // Initialize loggers
 const serverLogger = new Logger('Server', LogLevel.INFO);
@@ -65,6 +66,7 @@ registerDeleteAssetTool(server, mcpUnity, toolLogger);
 registerMoveAssetTool(server, mcpUnity, toolLogger);
 registerAddToAddressableTool(server, mcpUnity, toolLogger);
 registerAddAssetTool(server, mcpUnity, toolLogger);
+registerPackAtlasTool(server, mcpUnity, toolLogger);
 
 // Register all resources into the MCP server
 registerGetTestsResource(server, mcpUnity, resourceLogger);
