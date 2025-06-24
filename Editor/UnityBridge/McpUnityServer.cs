@@ -263,6 +263,10 @@ namespace McpUnity.Unity
             // Register AddToAddressableTool
             AddToAddressableTool addToAddressableTool = new AddToAddressableTool();
             _tools.Add(addToAddressableTool.Name, addToAddressableTool);
+
+            // Register AddAssetTool
+            AddAssetTool addAssetTool = new AddAssetTool();
+            _tools.Add(addAssetTool.Name, addAssetTool);
         }
         
         /// <summary>

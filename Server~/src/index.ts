@@ -24,6 +24,7 @@ import { registerAddUnityPackageTool } from './tools/addUnityPackageTool.js';
 import { registerDeleteAssetTool } from './tools/assetTools/deleteAssetTool.js';
 import { registerMoveAssetTool } from './tools/assetTools/moveAssetTool.js';
 import { registerAddToAddressableTool } from './tools/addressableTools/addToAddressableTool.js';
+import { registerAddAssetTool } from './tools/assetTools/addAssetTool.js';
 
 // Initialize loggers
 const serverLogger = new Logger('Server', LogLevel.INFO);
@@ -63,6 +64,7 @@ registerAddUnityPackageTool(server, mcpUnity, toolLogger);
 registerDeleteAssetTool(server, mcpUnity, toolLogger);
 registerMoveAssetTool(server, mcpUnity, toolLogger);
 registerAddToAddressableTool(server, mcpUnity, toolLogger);
+registerAddAssetTool(server, mcpUnity, toolLogger);
 
 // Register all resources into the MCP server
 registerGetTestsResource(server, mcpUnity, resourceLogger);
